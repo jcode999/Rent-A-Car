@@ -5,6 +5,6 @@ from django.db import models
 #equivalent to fields
 
 
-    
+
 
 
