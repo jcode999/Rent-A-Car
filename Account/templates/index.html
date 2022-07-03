@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> RentACar</title>
+        <style>
+            img {
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="{% static 'images/logo.jpeg'%}">
+        <p>We have the <em>cars</em>cars you are looking for.<br>
+           <em>Renting a car</em> has never been this easier.<br>
+           Create a free account today to browse our selection</p>
+
+          <form action="/Account/" method="post"> 
+            <div>
+                <lable>User Name</lable>
+                <input>
+            </div>
+            <div>
+                <lable>Password</lable>
+                <input>
+            </div>
+           
+            <button>Submit</button>
+          </form> 
+    </body>
+</html>
