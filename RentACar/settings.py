@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-eo@71e$48x90j8k!b#kqnza00z+kiue%@$!e+m^=r1mbuaf2@7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Account',
-    'Car'
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +55,7 @@ ROOT_URLCONF = 'RentACar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["templates"],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,7 +67,7 @@ TEMPLATES = [
         },
     },
 ]
-
+AUTH_USER_MODEL = 'account.Account'
 WSGI_APPLICATION = 'RentACar.wsgi.application'
 
 
@@ -123,3 +122,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
