@@ -1,8 +1,54 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<h1>Cars</h1>
+<br>
 <center>
-<h1> {{ name }}!</h1>
-
+  {% for vehicle in vehicle_list %}
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width: 20rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <strong class="card-title">{{ vehicle.make }}</strong>
+          {{ vehicle.mod }}
+          {{ vehicel.year }}
+          <p class="card-text">{{ vehicel.description }}
+          </p>
+          <!--Add link to go to individual car purchase page here -->
+          <a href="#" class="btn btn-primary">RENT</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <strong class="card-title">{{ vehicle.make }}</strong>
+          {{ vehicle.mod }}
+          {{ vehicel.year }}
+          <p class="card-text">{{ vehicel.description }}
+          </p>
+          <!--Add link to go to individual car purchase page here -->
+          <a href="#" class="btn btn-primary">RENT</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <strong class="card-title">{{ vehicle.make }}</strong>
+          {{ vehicle.mod }}
+          {{ vehicel.year }}
+          <p class="card-text">{{ vehicel.description }}
+          </p>
+          <!--Add link to go to individual car purchase page here -->
+          <a href="#" class="btn btn-primary">RENT</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  {% endfor %}
 </center>
 {% endblock %}
