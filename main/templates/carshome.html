@@ -54,14 +54,13 @@
 {% for vehicle in vehicle_list %}
           <div class="col">
             <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              
+              <img src="{{vehicle.image.url}}"/>
               <div class="card-body">
                 <h5 style="color:blue">{{vehicle.make}}</h5>
                 <p class="card-text">{{vehicle.mod}}, {{vehicle.year}}
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <a href="#" class="btn btn-primary my-2">RENT</a>
+                    <a href="#" role="button" class="btn btn-primary my-2">RENT</a>
                   </div>
                   <h3 class="bold">{{vehicle.price}}</h3>
                   <p class="text-muted">USD Per Week</p>

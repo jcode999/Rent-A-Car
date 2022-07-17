@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Vehicle(models.Model):
     make = models.CharField('Vehicle Make', max_length=50)
@@ -6,6 +7,8 @@ class Vehicle(models.Model):
     year = models.CharField('Vehicle Year', max_length=50)
     price = models.CharField('Vehicle Price', max_length=50, default=0)
     description = models.TextField(blank=True)
+    image = models.ImageField(upload_to="images/", default="images/default.png")
+    slug = models.SlugField(max_length=255, default=0)
 
 def __str__(self):
     return self.name
