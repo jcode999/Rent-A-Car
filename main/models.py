@@ -4,6 +4,7 @@ class Vehicle(models.Model):
     make = models.CharField('Vehicle Make', max_length=50)
     mod = models.CharField('Vehicle Model', max_length=50)
     year = models.CharField('Vehicle Year', max_length=50)
+    price = models.CharField('Vehicle Price', max_length=50)
     description = models.TextField(blank=True)
 
 def __str__(self):
