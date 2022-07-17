@@ -23,7 +23,7 @@
     <div class="navbar navbar-dark bg-dark shadow-sm">
       <div class="container">
         <a href="#" class="navbar-brand d-flex align-items-center">
-          &#128663<strong> RENTACAR INFO</strong>
+          &#128663<strong>-RENTACAR INFO</strong>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -58,13 +58,13 @@
               
               <div class="card-body">
                 <h5 style="color:blue">{{vehicle.make}}</h5>
-                <p class="card-text">{{vehicle.mod}}
+                <p class="card-text">{{vehicle.mod}}, {{vehicle.year}}
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    <a href="#" class="btn btn-primary my-2">RENT</a>
                   </div>
-                  <h3 class="bold">9 mins</h3>
+                  <h3 class="bold">{{vehicle.price}}</h3>
+                  <p class="text-muted">USD Per Week</p>
                 </div>
               </div>
             </div>
@@ -82,8 +82,6 @@
       <p class="float-end mb-1">
         <a href="#">Back to top</a>
       </p>
-      <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-      <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.2/getting-started/introduction/">getting started guide</a>.</p>
     </div>
   </footer>
 {% endblock %}

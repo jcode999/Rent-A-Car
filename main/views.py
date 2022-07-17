@@ -4,7 +4,7 @@ from .models import Vehicle
 # Create your views here.
 
 
-def index(request):where 
+def index(request):
     top = "This is the main page"
     return render(request,
                   'home.html', {
