@@ -20,7 +20,8 @@ def car(request):
                       'vehicle_list': vehicle_list
                   })
 
+
 def single(request, slug):
     data = Vehicle.objects.get(slug=slug)
     vehicle_list = Vehicle.objects.all()
-    return render(request, "single.html", {"vehicle":data})  
+    return render(request, "single.html", {"vehicle": data})
