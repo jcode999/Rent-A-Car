@@ -1,5 +1,6 @@
 asgiref==3.5.2
 autopep8==1.6.0
+<<<<<<< HEAD
 backports.zoneinfo==0.2.1
 Django==4.0.6
 django-crispy-forms==1.14.0
@@ -8,3 +9,11 @@ pycodestyle==2.8.0
 sqlparse==0.4.2
 toml==0.10.2
 whitenoise==6.2.0
+=======
+dj-database-url==0.5.0
+Django==4.0.5
+pycodestyle==2.8.0
+sqlparse==0.4.2
+toml==0.10.2
+tzdata==2022.1
+>>>>>>> 11112e836c1e89970a62c440bd0123f475fbb2c2
