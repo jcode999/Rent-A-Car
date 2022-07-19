@@ -35,14 +35,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'account',
     'home',
     'crispy_forms',
     'crispy_bootstrap5'
-=======
     'main',
->>>>>>> 11112e836c1e89970a62c440bd0123f475fbb2c2
 ]
 
 MIDDLEWARE = [
@@ -131,11 +128,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-<<<<<<< HEAD
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-=======
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
->>>>>>> 11112e836c1e89970a62c440bd0123f475fbb2c2
