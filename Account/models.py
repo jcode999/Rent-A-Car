@@ -70,7 +70,3 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_lable):
         return True
-
-class Payment(models.Model):
-    user = models.ForeignKey(Account,on_delete=models.CASCADE)
-    
