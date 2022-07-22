@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<header>
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">RENTACAR</h4>
+          <p class="text-muted">RENTACAR rental service strives for quality and customer satisfaction. When you shop at
+            RENTACAR we garentee no haggle pricing, flexable and secure financing options, and a certified cleaned
+            vehicle. We offer free home deliveries as well as in-store pickup. </p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Contact</h4>
+          <ul class="list-unstyled">
+            <li><a class="text-white">Follow on Twitter -> @RENTACAR</a></li>
+            <li><a class="text-white">Like on Facebook -> RENTACAR</a></li>
+            <li><a class="text-white">Email us: RENTACAR@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        &#128663<strong> RENTACAR INFO</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+        aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Section for company logo</h1>
+        <p class="lead text-muted">...</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        {% for vehicle in vehicle_list %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="{{vehicle.image.url}}" />
+            <div class="card-body">
+              <h5 style="color:blue">{{vehicle.make}}</h5>
+              <p class="card-text">{{vehicle.mod}}, {{vehicle.year}}
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{{vehicle.get_absolute_url}}" role="button" class="btn btn-primary btn-sm">RENT</a>
+                </div>
+                <h3 class="bold">{{vehicle.price}}</h3>
+                <p class="text-muted">USD Per Week</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Back to top</a>
+    </p>
+  </div>
+</footer>
+{% endblock %}

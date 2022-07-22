@@ -8,3 +8,5 @@ pycodestyle==2.8.0
 sqlparse==0.4.2
 toml==0.10.2
 whitenoise==6.2.0
+dj-database-url==0.5.0
+tzdata==2022.1
