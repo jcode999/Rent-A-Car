@@ -1,9 +1,11 @@
 
 from django.db import models
 from django.contrib.auth.base_user import (AbstractBaseUser, BaseUserManager)
-# Create your models here.
+from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
+from django.utils.translation import gettext_lazy as _
 
 
+# custom user model manager
 class CustomAccountManager(BaseUserManager):
     def create_user(self, username, email, first_name, last_name, password=None):
         if not email:
@@ -24,6 +26,7 @@ class CustomAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+    # override create_superuser and create user
     def create_superuser(self, username, email, first_name, last_name, password=None):
         user = self.model(
             username=username,
@@ -37,6 +40,15 @@ class CustomAccountManager(BaseUserManager):
         user.is_staff = True
         user.save(using=self._db)
         return user
+# credit card model
+
+
+class Payment(models.Model):
+    cc_number = CardNumberField(_('card number'))
+    cc_expiry = CardExpiryField(_('expiration date'))
+    cc_code = SecurityCodeField(_('security code'))
+
+# custom user model
 
 
 class Account(AbstractBaseUser):
@@ -54,6 +66,8 @@ class Account(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
+    credit_card = models.ForeignKey(
+        Payment, on_delete=models.CASCADE, default=None, blank=True, null=True)
 
     USERNAME_FIELD = 'username'  # used to log in
     REQUIRED_FIELDS = ['first_name', 'last_name', 'email']

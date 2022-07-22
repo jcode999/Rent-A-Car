@@ -1,11 +1,18 @@
 
 from django.shortcuts import render, redirect
+
+from account.models import Account
 from .forms import LogInForm, RegistrationForm
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+
+
+def dashboard(request, username):
+    user = Account.objects.get(username=username)
+    return render(request, 'dashboard/dashboard.html', {'user': user})
 
 
 def logIn(request):
@@ -18,7 +25,8 @@ def logIn(request):
         if user is not None:
             login(request, user)
             messages.info(request, f"You are now logged in as {username}.")
-            return redirect("account:dashboard")
+            return redirect("account:dashboard", username)
+
         else:
             messages.error(
                 request, f"Invalid email:{username} or password:{password}")
@@ -37,7 +45,3 @@ def registration(response):
         form = RegistrationForm()
 
     return render(response, 'registration/registration.html', {'registration_form': form})
-
-
-def dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
