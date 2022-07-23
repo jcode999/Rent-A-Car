@@ -64,11 +64,11 @@
 
 }
 body{
-    background-image: url("/static/account/images/loginbg2.jpeg");
-    background-size:cover;
-   
+    background-image: url("/static/account/images/bg.jpeg");
+    background-size:auto;
+    size:50pc;
 }
-.form-link{
+.register-link{
     color:black;
     margin-left: 8rem;
     margin-bottom: 2rem;

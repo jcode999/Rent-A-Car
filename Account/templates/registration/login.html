@@ -12,23 +12,27 @@
 </head>
 <body>
     <div class="center">
-        <h1>Log In</h1>
+        <img class="logo" src="{% static 'account/images/test.jpeg' %}">
+        <h1>Welcome back!</h1>
         {% load crispy_forms_tags %}
         
         <form action={% url 'account:login' %} method = "post">
-            <fieldset>
             {% csrf_token %}
             {{ login_form|crispy }}
             <button class="submit-button">Log In</button>
-        </fieldset>
         </form>
+        <div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}     
+        </div>
+        <div class=" form-link ">Not a member?
+        <a href="{% url 'account:registration' %}">  Register Here</a>
+        </div>
     </div>   
 </body>
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
 </html>

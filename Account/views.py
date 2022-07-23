@@ -24,12 +24,11 @@ def logIn(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.info(request, f"You are now logged in as {username}.")
             return redirect("account:dashboard", username)
 
         else:
             messages.error(
-                request, f"Invalid email:{username} or password:{password}")
+                request, f"Invalid Username or Password")
 
     form = AuthenticationForm()
     return render(request=request, template_name='registration/login.html', context={"login_form": form})

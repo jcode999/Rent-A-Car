@@ -10,12 +10,17 @@
     <title>Registration</title>
 </head>
 <body>
-    <h1>Registration</h1>
-    {% load crispy_forms_tags %}
-    <form method = 'post' class="registration-form" >
-        {% csrf_token %}
-        {{ registration_form|crispy }}
-        <input type="submit" value="Submit"/>
-    </form>
+    <div class="center">
+        <h1>Register for free</h1>
+        {% load crispy_forms_tags %}
+        <form method = 'post'>
+            {% csrf_token %}
+            {{ registration_form|crispy }}
+            <button class="submit-button">Submit</button>
+        </form>
+        <div class=" form-link ">Already a member?
+            <a href="{% url 'account:login' %}">  Log in here</a>
+        </div>
+    </div>
 </body>
 </html>
