@@ -1,5 +1,7 @@
+from pickletools import opcodes
 from django.db import models
 from django.urls import reverse
+from account.models import Account
 
 
 class Vehicle(models.Model):
@@ -11,7 +13,3 @@ class Vehicle(models.Model):
     image = models.ImageField(
         upload_to="images/", default="images/default.png")
     slug = models.SlugField(max_length=255, default=0)
-
-
-def get_absolute_url(self):
-    return reverse("main:single", args=[self.slug])
