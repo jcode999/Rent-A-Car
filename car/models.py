@@ -15,6 +15,5 @@ class Vehicle(models.Model):
     def get_absolute_url(self):
         return reverse("car:single", args=[self.slug])
 
-
-def _str_(self):
-    return self.make
+    def _str_(self):
+        return self.make
