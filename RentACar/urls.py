@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include(('car.urls', 'car'), namespace='car')),
     path('account/', include(('account.urls', 'account'), namespace='account'))
 
+
 ]
 
 if settings.DEBUG:

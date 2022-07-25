@@ -75,7 +75,7 @@ class Account(AbstractBaseUser):
     objects = CustomAccountManager()
 
     def __str__(self):
-        return self.username + ", " + self.first_name + ", " + self.last_name + ", "+self.email + ", " + self.password
+        return self.username + ", " + self.first_name + ", " + self.last_name
 
     # required methods for costum User model
 
