@@ -12,9 +12,9 @@ class Vehicle(models.Model):
         upload_to="images/", default="images/default.png")
     slug = models.SlugField(max_length=255, default=0)
 
+    def get_absolute_url(self):
+        return reverse("car:single", args=[self.slug])
 
-def get_absolute_url(self):
-    return reverse("car:single", args=[self.slug])
 
 def _str_(self):
     return self.make
