@@ -14,11 +14,7 @@ def home(request):
 
 def car(request):
     vehicle_list = Vehicle.objects.all()
-    return render(request,
-                  'carshome.html',
-                  {
-                      'vehicle_list': vehicle_list
-                  })
+    return render(request,'carshome.html',{ 'vehicle_list': vehicle_list })
 
 
 def single(request, slug):
