@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect
-from account.models import Account
-from .forms import LogInForm, RegistrationForm
+from account.models import Account, Payment
+from .forms import LogInForm, RegistrationForm, PaymentForm, UpdateUserForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -9,9 +9,9 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-def dashboard(request, username):
-    user = Account.objects.get(username=username)
+def dashboard(request):
     if request.user.is_authenticated:
+        user = request.user
         return render(request, 'dashboard/dashboard.html', {'user': user})
     else:
         return render(request, 'invalidpage.html')
@@ -26,7 +26,7 @@ def logIn(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("account:dashboard", username)
+            return redirect("account:dashboard")
 
         else:
             messages.error(
@@ -52,3 +52,34 @@ def log_out(request):
     logout(request)
     messages.success(request, ("You are logged out"))
     return redirect('account:login')
+
+
+def add_credit_card(request):
+    if request.method == 'POST':
+        form = PaymentForm(request.POST)
+        cc_number = request.POST.get('cc_number')
+        cc_expiry = request.POST.get('cc_expiry')
+        cc_code = request.POST.get('cc_code')
+        if request.user.is_authenticated:
+            user = request.user
+        card = Payment.create(cc_number, cc_expiry, cc_code, user)
+        if form.is_valid():
+            card.save()
+            return redirect('account:dashboard')
+    else:
+        form = PaymentForm()
+    return render(request, 'dashboard/paymentform.html', {'payment_form': form})
+
+
+def update_info(request):
+    user = request.user
+    if request.method == 'GET':
+        initial_dict = {'username': user.username,
+                        'email': user.email,
+                        'first_name': user.first_name,
+                        'last_name': user.last_name,
+                        }
+        form = UpdateUserForm(request.POST or None, initial=initial_dict)
+        return render(request, 'dashboard/update_info.html', {'update_form': form, 'user': user, 'request_method': request.method})
+    form = RegistrationForm()
+    return render(request, 'dashboard/update_info.html', {'update_form': form, 'user': user, 'request_method': request.method})

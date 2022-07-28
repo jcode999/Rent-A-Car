@@ -10,5 +10,7 @@
     <h1>welcome to your dashboard, {{user.username}}</h1>
     <h1>Your Email is: , {{user.email}}</h1>
     <a href="{% url 'account:logout'%}">Log Out</a>
+    <a href="{% url 'account:add_payment'%}">add a payment method</a>
+    <a href="{% url 'account:update_info' %}">Update your information</a>
 </body>
 </html>
