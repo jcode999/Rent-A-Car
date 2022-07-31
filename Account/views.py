@@ -85,18 +85,12 @@ def update_info(request):
     # if the request method is post, create empty form
     else:
         form = UpdateUserForm(request.POST)
-        # collect data entered by user from form
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        # update the changes in the user
-        user.username = username
-        user.email = email
-        user.first_name = first_name
-        user.last_name = last_name
-        # save the updates
+        # update data entered by user from form
+        user.username = request.POST.get('username')
+        user.email = request.POST.get('email')
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('last_name')
         user.save()
-        messages.success(request,('successfully updated'))
+        messages.success(request, ('successfully updated'))
         return redirect('account:dashboard')
     return render(request, 'dashboard/update_info.html', {'update_form': form, 'user': user, 'request_method': request.method})
