@@ -10,11 +10,6 @@ class LogInForm(forms.Form):
 
 
 class RegistrationForm(UserCreationForm):
-    username = forms.CharField(max_length=50, label='username')
-    email = forms.CharField(widget=EmailInput)
-    first_name = forms.CharField(max_length=50, label='first_name')
-    last_name = forms.CharField(max_length=50, label='last_name')
-
     class Meta:
         model = Account
         fields = ['username', 'email', 'first_name', 'last_name']
