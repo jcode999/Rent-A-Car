@@ -1,5 +1,12 @@
+{% extends dashboard/dashboard_base.html %}
+{% block content %}
+<title>Manage Payment</title>
+</head>
+<body>
 <form method = 'POST'>
     {% csrf_token %}
     {{payment_form}}
     <button type="submit">Submit</button>
 </form>
+</body>
+{% endblock %}

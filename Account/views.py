@@ -73,13 +73,30 @@ def add_credit_card(request):
 
 def update_info(request):
     user = request.user
-    if request.method == 'GET':
-        initial_dict = {'username': user.username,
+    if request.method == 'GET':  # if user is logged in display previous detail
+        initial_dict = {'username': user.username,  # create dictionary with fields as keys
                         'email': user.email,
                         'first_name': user.first_name,
                         'last_name': user.last_name,
                         }
+        # create the form with prepopulated data
         form = UpdateUserForm(request.POST or None, initial=initial_dict)
         return render(request, 'dashboard/update_info.html', {'update_form': form, 'user': user, 'request_method': request.method})
-    form = RegistrationForm()
+    # if the request method is post, create empty form
+    else:
+        form = UpdateUserForm(request.POST)
+        # collect data entered by user from form
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        # update the changes in the user
+        user.username = username
+        user.email = email
+        user.first_name = first_name
+        user.last_name = last_name
+        # save the updates
+        user.save()
+        messages.success(request,('successfully updated'))
+        return redirect('account:dashboard')
     return render(request, 'dashboard/update_info.html', {'update_form': form, 'user': user, 'request_method': request.method})
