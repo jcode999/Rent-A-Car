@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
-import django_on_heroku
+#import django_heroku
 from decouple import config
 
 
@@ -139,4 +139,4 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-django_on_heroku.settings(locals())
+# django_on_heroku.settings(locals())
