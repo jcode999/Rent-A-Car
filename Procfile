@@ -1,1 +1,1 @@
-web: python manage.py migrations && gunicorn RentACar.wsgi
+web: gunicorn RentACar.wsgi
