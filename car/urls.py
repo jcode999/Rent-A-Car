@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path("cars/", views.car, name="car"),
     path('cars/single/<slug:slug>', views.single, name="single"),
+    path('cars/search/', views.searchByMake, name="search_make"),
 ]
 
 
