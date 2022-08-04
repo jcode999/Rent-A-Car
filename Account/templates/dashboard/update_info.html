@@ -1,8 +1,0 @@
-<body>
-    <form method='POST' action={% url 'account:update_info' %}>
-        {% csrf_token %}
-        {{update_form}}
-        <button type="submit">Submit</button>
-    </form>
-    
-</body>
