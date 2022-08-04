@@ -1,6 +1,5 @@
 from pickletools import opcodes
 from django.db import models
-from django.forms import NullBooleanField
 from django.urls import reverse
 from account.models import Account
 
