@@ -24,5 +24,15 @@ def single(request, slug):
 
 def searchByMake(request):
     if request.method == 'GET':
-        return render(request, 'searches/search_by_make.html')
+        make = request.GET.get('make')
+        make_list = Vehicle.objects.filter(make=make)
+        return render(request, 'searches/search_by_make.html', {'make_list': make_list})
     return render(request, 'searches/search_by_make.html')
+
+
+def searchByModel(request):
+    if request.method == 'GET':
+        model = request.GET.get('model')
+        model_list = Vehicle.objects.filter(mod=model)
+        return render(request, 'searches/search_by_model.html', {'model_list': model_list})
+    return render(request, 'searches/search_by_model.html')

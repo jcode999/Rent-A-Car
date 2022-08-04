@@ -25,7 +25,7 @@
             <li>
               <form action={% url 'car:search_make' %} method="get">
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Search by make" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <input name = 'make' type="text" class="form-control" placeholder="Search by make" aria-label="Search by make" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                       <button class="btn btn-outline-secondary" type="submit">search</button>
                     </div>
@@ -33,16 +33,17 @@
               </form>
             </li>
             <li>
+              <form action={% url 'car:search_model' %} method="get">
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <input name = 'model' type="text" class="form-control" placeholder="Search by model" aria-label="Search by model" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button">Button</button>
+                      <button class="btn btn-outline-secondary" type="submit">Search</button>
                     </div>
                 </div>
             </li>
             <li>
               <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <input name = 'price' type="text" class="form-control" placeholder="Search by price" aria-label="Search by price" aria-describedby="basic-addon2">
                   <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button">Button</button>
                   </div>
