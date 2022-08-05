@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    {% for vehicle in model_list %}
+    <div class="col">
+        <div class="card shadow-sm">
+          <img src="{{vehicle.image.url}}" alt="" />
+          <div class="card-body">
+            <h5 style="color:blue">{{vehicle.make}}</h5>
+            <p class="card-text">{{vehicle.mod}}, {{vehicle.year}}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a href="{{vehicle.get_absolute_url}}" role="button" class="btn btn-primary btn-sm">RENT</a>
+              </div>
+              <h3 class="bold">{{vehicle.price}}</h3>
+              <p class="text-muted">USD Per Week</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+</body>
+{% endblock %}
