@@ -43,11 +43,6 @@ class CustomAccountManager(BaseUserManager):
 # credit card model
 
 
-class Payment(models.Model):
-    cc_number = CardNumberField(_('card number'))
-    cc_expiry = CardExpiryField(_('expiration date'))
-    cc_code = SecurityCodeField(_('security code'))
-
 # custom user model
 
 
@@ -66,9 +61,6 @@ class Account(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    credit_card = models.ForeignKey(
-        Payment, on_delete=models.CASCADE, default=None, blank=True, null=True)
-
     USERNAME_FIELD = 'username'  # used to log in
     REQUIRED_FIELDS = ['first_name', 'last_name', 'email']
 
@@ -84,3 +76,21 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_lable):
         return True
+
+
+class Payment(models.Model):
+    cc_number = CardNumberField(_('card number'))
+    cc_expiry = CardExpiryField(_('expiration date'))
+    cc_code = SecurityCodeField(_('security code'))
+    user = models.ForeignKey(
+        Account, on_delete=models.CASCADE, blank=False, null=False)
+
+    @classmethod
+    def create(cls, cc_number, cc_expiry, cc_code, user):
+        payment = cls(cc_number=cc_number,
+                      cc_expiry=cc_expiry,
+                      cc_code=cc_code, user=user)
+        return payment
+
+    def __str__(self):
+        return self.user.username + " " + self.cc_number
