@@ -9,4 +9,5 @@ urlpatterns = [
     path('dashboard/payment', views.add_credit_card, name='add_payment'),
     path('dashboard/update', views.update_info, name='update_info'),
 
+
 ]
