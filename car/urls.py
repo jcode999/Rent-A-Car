@@ -5,7 +5,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
 app_name = "car"
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.car, name='car'),
     path("cars/", views.car, name="car"),
     path('cars/single/<slug:slug>', views.single, name="single"),
     path('cars/search/make', views.searchByMake, name="search_make"),
