@@ -93,4 +93,3 @@ def update_info(request):
         user.save()
         messages.success(request, ('successfully updated'))
         return redirect('account:dashboard')
-    return render(request, 'dashboard/update_info.html', {'update_form': form, 'user': user, 'request_method': request.method})

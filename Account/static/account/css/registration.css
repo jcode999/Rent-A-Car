@@ -36,12 +36,37 @@
     outline: none;
     margin-top: 2rem;
     margin-left: 2rem;
-    margin-bottom: 2rem;
+    
    
 
 }
+
 .submit-button:hover{
     box-shadow: inset 80pc 0 0 0 #804df6;
+    cursor: pointer;
+    color: #f5f6f8;
+}
+
+.cancle-button{
+    width: 80%;
+    height: 40px;
+    color:rgb(246, 246, 246);
+    background-color: black;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
+    border:none;
+    box-shadow: inset 0 0 0 0 #44f09d;
+    outline: none;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    
+   
+
+}
+.cancle-button:hover{
+    box-shadow: inset 80pc 0 0 0 #eb5c10;
     cursor: pointer;
     color: #f5f6f8;
 }
