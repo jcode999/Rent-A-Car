@@ -1,0 +1,74 @@
+{% extends 'dashboard/dashboard_base.html'%}
+{% block content %}
+
+            <!-- /#sidebar-wrapper -->
+    
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                        <h2 class="fs-2 m-0">Dashboard</h2>
+                    </div>
+    
+                    
+    
+                    
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link  second-text fw-bold" href="#" id="navbarDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user me-2"></i>{{ user.username }}
+                                </a>
+                                
+                            </li>
+                        </ul>
+                    
+                </nav>
+                <div class="row my-5">
+                    <h3 class="fs-4 mb-3">Rental History</h3>
+                    <div class="col">
+                        <table class="table bg-white rounded shadow-sm  table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col" width="50">#</th>
+                                    <th scope="col">Vehicle</th>
+                                    <th scope="col">Rented On</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Honda Civic</td>
+                                    <td>01/13/2022</td>
+                                    <td>Expired</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Dodge Challenger</td>
+                                    <td>05/22/2022</td>
+                                    <td>Expired</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Honda Accord</td>
+                                    <td>08/01/2022</td>
+                                    <td>Active</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+    
+                
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+                <script>
+                    var el = document.getElementById("wrapper");
+                    var toggleButton = document.getElementById("menu-toggle");
+            
+                    toggleButton.onclick = function () {
+                        el.classList.toggle("toggled");
+                    };
+                </script>
+
+{% endblock %}
