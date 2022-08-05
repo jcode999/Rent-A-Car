@@ -54,23 +54,6 @@ def log_out(request):
     return redirect('account:login')
 
 
-def add_credit_card(request):
-    if request.method == 'POST':
-        form = PaymentForm(request.POST)
-        cc_number = request.POST.get('cc_number')
-        cc_expiry = request.POST.get('cc_expiry')
-        cc_code = request.POST.get('cc_code')
-        if request.user.is_authenticated:
-            user = request.user
-        card = Payment.create(cc_number, cc_expiry, cc_code, user)
-        if form.is_valid():
-            card.save()
-            return redirect('account:dashboard')
-    else:
-        form = PaymentForm()
-    return render(request, 'dashboard/paymentform.html', {'payment_form': form})
-
-
 def update_info(request):
     user = request.user
     if request.method == 'GET':  # if user is logged in display previous detail
@@ -81,7 +64,8 @@ def update_info(request):
                         }
         # create the form with prepopulated data
         form = UpdateUserForm(request.POST or None, initial=initial_dict)
-        return render(request, 'dashboard/update_info.html', {'update_form': form, 'user': user, 'request_method': request.method})
+        payment_form = PaymentForm()
+        return render(request, 'dashboard/update_info.html', {'update_form': form, 'user': user, 'payment_form': payment_form})
     # if the request method is post, create empty form
     else:
         form = UpdateUserForm(request.POST)
@@ -91,6 +75,19 @@ def update_info(request):
         user.first_name = request.POST.get('first_name')
         user.last_name = request.POST.get('last_name')
         user.save()
-        messages.success(request, ('successfully updated'))
         return redirect('account:dashboard')
-    return render(request, 'dashboard/update_info.html', {'update_form': form, 'user': user, 'request_method': request.method})
+
+
+def save_card(request):
+    user = request.user
+    if request.method == 'GET':
+        form = PaymentForm()
+        return redirect('account:update_info', {'payment_form': form})
+    form = PaymentForm(request.POST)
+    cc_number = request.POST.get('cc_number')
+    cc_expiry = request.POST.get('cc_expiry')
+    cc_code = request.POST.get('cc_code')
+    card = Payment.create(cc_number, cc_expiry, cc_code, user)
+    if form.is_valid():
+        card.save()
+    return redirect('account:dashboard')

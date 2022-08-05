@@ -91,3 +91,6 @@ class Payment(models.Model):
                       cc_expiry=cc_expiry,
                       cc_code=cc_code, user=user)
         return payment
+
+    def __str__(self):
+        return self.user.username + " " + self.cc_number
