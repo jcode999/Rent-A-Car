@@ -19,6 +19,10 @@
             {{ registration_form|crispy }}
             <button class="submit-button">Submit</button>
         </form>
+    
+        <form action={% url 'car:home' %} method="get" >
+            <button class="cancle-button" type="submit">Cancle</button>
+        </form>
         <div class=" form-link ">Already a member?
             <a href="{% url 'account:login' %}">  Log in here</a>
         </div>
