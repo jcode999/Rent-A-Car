@@ -12,7 +12,7 @@ class Vehicle(models.Model):
     trans = models.CharField('Vehicle trans', max_length=50, default="")
     body = models.CharField('Vehicle type', max_length=50, default="")
     color = models.CharField('Vehicle color', max_length=50, default="")
-    price = models.CharField('Vehicle Price', max_length=50, default=0)
+    price = models.IntegerField('Vehicle Price', default=0)
     description = models.TextField(blank=True)
     image = models.ImageField(
         upload_to="images/", default="images/default.png")
