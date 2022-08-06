@@ -22,9 +22,13 @@
                     <a href="{% url 'account:dashboard' %}" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                             class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="{% url 'account:update_info' %}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                            class="fas fa-chart-line me-2"></i>Update Info</a>
+                            class="fas fa-pen me-2"></i>Update Info</a>
+                    <a href="{% url 'car:car'%}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                            class="fas fa-car-side me-2"></i>Browse Cars</a>
                     <a href="{% url 'account:logout'%}" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                             class="fas fa-power-off me-2"></i>Logout</a>
+                    
+                    
                 </div>
             </div>
 {% block content%}
