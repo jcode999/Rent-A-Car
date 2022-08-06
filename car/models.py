@@ -1,7 +1,6 @@
 from pickletools import opcodes
 from django.db import models
 from django.urls import reverse
-from account.models import Account
 
 
 class Vehicle(models.Model):
@@ -29,9 +28,3 @@ class Vehicle(models.Model):
 
     def __str__(self):
         return self.make
-
-
-class Reservation(models.Model):
-    renter = models.ForeignKey(
-        Account, on_delete=models.CASCADE, blank=False, null=False)
-    vehicle = models.ManyToManyField(Vehicle)
