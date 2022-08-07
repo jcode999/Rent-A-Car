@@ -2,6 +2,8 @@ from pickletools import opcodes
 from django.db import models
 from django.urls import reverse
 from account.models import Account
+from django.utils.translation import gettext_lazy as _
+import datetime
 
 
 class Vehicle(models.Model):
@@ -27,3 +29,21 @@ class Vehicle(models.Model):
 
     def __str__(self):
         return self.make
+
+
+class Reservation(models.Model):
+    renter = models.ForeignKey(
+        Account, on_delete=models.CASCADE, blank=False, null=False)
+    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, blank=True,
+                                null=True)
+    reservation_date = models.DateField(_("Date"), default=datetime.date.today)
+    return_date = models.DateField(_("Date"), default=datetime.date.today)
+
+    @classmethod
+    def create(cls, renter, vehicle, reservation_date, return_date):
+        reservation = cls(renter=renter, vehicle=vehicle,
+                          reservation_date=reservation_date, return_date=return_date)
+        return reservation
+
+    def __str__(self):
+        return self.renter.username
