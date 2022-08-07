@@ -1,7 +1,8 @@
 
 from django.shortcuts import render, redirect
 from account.models import Account, Payment
-from .forms import LogInForm, RegistrationForm, PaymentForm, UpdateUserForm
+from car.models import Reservation, Vehicle
+from .forms import LogInForm, RegistrationForm, PaymentForm, UpdateUserForm, ReservationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -12,7 +13,8 @@ from django.contrib.auth.decorators import login_required
 def dashboard(request):
     if request.user.is_authenticated:
         user = request.user
-        return render(request, 'dashboard/dashboard.html', {'user': user})
+        reservations = Reservation.objects.filter(renter_id=user.id)
+        return render(request, 'dashboard/dashboard.html', {'user': user, 'reservations': reservations})
     else:
         return render(request, 'invalidpage.html')
 
@@ -80,6 +82,7 @@ def update_info(request):
 
 def save_card(request):
     user = request.user
+
     if request.method == 'GET':
         form = PaymentForm()
         return redirect('account:update_info', {'payment_form': form})
@@ -91,3 +94,6 @@ def save_card(request):
         card = Payment.create(cc_number, cc_expiry, cc_code, user)
         card.save()
     return redirect('account:dashboard')
+
+
+

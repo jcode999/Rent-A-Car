@@ -110,11 +110,20 @@
                   <p class="text-muted">CVC</p>
                   <input class="form-control3" type="text" value="630" placeholder="XXX">
                 </div>
+                <div>
+                  {% load crispy_forms_tags %}
+                <form method = 'post' action =  '{{vehicle.get_absolute_url}}'>
+                  {% csrf_token %}
+                  {{ reservation_form| crispy }}
+                <button type="submit">Reserve</button>
+                </form>
+                </div>
               </div>
             </div>
           </div>
           <div class="row m-0">
             <div class="col-12  mb-4 p-0">
+              
               <!-- Button trigger modal -->
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 RENT
