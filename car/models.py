@@ -36,8 +36,10 @@ class Reservation(models.Model):
         Account, on_delete=models.CASCADE, blank=False, null=False)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, blank=True,
                                 null=True)
-    reservation_date = models.DateField(_("Date"), default=datetime.date.today)
-    return_date = models.DateField(_("Date"), default=datetime.date.today)
+    reservation_date = models.DateField(
+        _("Reservation date"), default=datetime.date.today)
+    return_date = models.DateField(
+        _("Return date"), default=datetime.date.today)
 
     @classmethod
     def create(cls, renter, vehicle, reservation_date, return_date):

@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 def dashboard(request):
     if request.user.is_authenticated:
         user = request.user
-        reservations = Reservation.objects.filter(renter_id=user.id)
+        reservations = Reservation.objects.filter(renter_id=1)
         return render(request, 'dashboard/dashboard.html', {'user': user, 'reservations': reservations})
     else:
         return render(request, 'invalidpage.html')
@@ -94,6 +94,3 @@ def save_card(request):
         card = Payment.create(cc_number, cc_expiry, cc_code, user)
         card.save()
     return redirect('account:dashboard')
-
-
-

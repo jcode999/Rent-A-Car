@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Vehicle, Reservation
 from account.forms import ReservationForm
+from account.models import Account
+from django.utils.dateparse import parse_date
 
 # Create your views here.
 
@@ -37,15 +39,21 @@ def searchByPrice(request):
 
 def reservation(request, slug):
     vehicle = Vehicle.objects.get(slug=slug)
+    user = request.user
     if request.method == 'POST':
         reservation_form = ReservationForm(request.POST)
         reservation_date = request.POST.get('reservation_date')
         return_date = request.POST.get('return_date')
-        renter = request.user
-
-        reservation = Reservation.create(
-            renter, vehicle, reservation_date, return_date)
-        reservation.save()
-        return render(request, 'single.html', {'vehicle': vehicle, 'reservation_form': reservation_form})
+        res_date = parse_date(reservation_date)
+        ret_date = parse_date(return_date)
+        reservation_period = ret_date - res_date
+        if user.is_authenticated:
+            renter = Account.objects.get(id=user.id)
+            reservation = Reservation.create(
+                renter, vehicle, reservation_date, return_date)
+            reservation.save()
+            #reservation_period = ret_date - res_date
+            amount_due = vehicle.price * reservation_period
+        return render(request, 'single.html', {'vehicle': vehicle, 'reservation_form': reservation_form, 'amount': amount_due})
     reservation_form = ReservationForm()
     return render(request, 'single.html', {'vehicle': vehicle, 'reservation_form': reservation_form})

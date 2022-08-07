@@ -48,7 +48,9 @@
                                     <th scope="row">1</th>
                                     <td>{{ reservation.vehicle.make }}</td>
                                     <td>{{ reservation.reservation_date }}</td>
-                                    <td>Expired</td>
+                                    <td>{{ reservation.return_date }}</td>
+                                    <td>{{ reservation_period }}</td>
+                                    
                                 </tr>
                         
                             {% endfor %}
