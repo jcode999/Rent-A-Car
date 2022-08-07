@@ -14,7 +14,7 @@
 
 <body>
     <div class="center">
-        <img class="logo" src="{% static 'account/images/test.jpeg' %}">
+        
         <h1>Welcome back!</h1>
         {% load crispy_forms_tags %}
 
@@ -27,12 +27,6 @@
         <form action={% url 'car:car' %} method="get">
             <button class="cancle-button" type="submit">Cancle</button>
         </form>
-<<<<<<< HEAD
-=======
-            <form action={% url 'car:car' %} method="get" >
-             <button class="cancle-button" type="submit">Cancle</button>
-            </form>
->>>>>>> 0f10b5d8fb5197babdce77f5eeeb9b2ed5afe6e4
         <div>
             {% if messages %}
             <ul class="messages">

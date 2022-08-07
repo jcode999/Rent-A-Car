@@ -50,7 +50,7 @@ def registration(response):
 
 def log_out(request):
     logout(request)
-    messages.success(request, ("You are logged out"))
+    messages.success(request, ("You have been logged out"))
     return redirect('account:login')
 
 
@@ -87,7 +87,7 @@ def save_card(request):
     cc_number = request.POST.get('cc_number')
     cc_expiry = request.POST.get('cc_expiry')
     cc_code = request.POST.get('cc_code')
-    card = Payment.create(cc_number, cc_expiry, cc_code, user)
     if form.is_valid():
+        card = Payment.create(cc_number, cc_expiry, cc_code, user)
         card.save()
     return redirect('account:dashboard')
