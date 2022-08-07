@@ -1,1 +1,1 @@
-web: gunicorn RentACar.wsgi
+web: waitress-serve --listen=*:8000 RentACar.wsgi:application
