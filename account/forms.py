@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import EmailInput, ModelForm
+from django.forms import ModelForm
 from account.models import Account, Payment
 from django.contrib.auth.forms import UserCreationForm
 
