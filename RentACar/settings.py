@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'account',
     'crispy_forms',
     'crispy_bootstrap5',
+    'gunicorn',
     'car'
 
 ]
