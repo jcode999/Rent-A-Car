@@ -18,7 +18,7 @@
         <h1>Welcome back!</h1>
         {% load crispy_forms_tags %}
 
-        <form action={% url 'account:login' %} method="post">
+        <form  action={% url 'account:login' %} method="post">
             {% csrf_token %}
             {{ login_form|crispy }}
             <button class="submit-button" type="submit">Log In</button>
