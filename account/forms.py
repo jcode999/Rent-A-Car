@@ -24,9 +24,6 @@ class UpdateUserForm(ModelForm):
 
 
 class PaymentForm(ModelForm):
-    card_holder_name = forms.CharField(
-        max_length=50, label='Card Holders Name')
-
     class Meta:
         model = Payment
         fields = ['cc_number', 'cc_expiry', 'cc_code']

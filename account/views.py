@@ -82,15 +82,13 @@ def update_info(request):
 
 def save_card(request):
     user = request.user
-
-    if request.method == 'GET':
-        form = PaymentForm()
-        return redirect('account:update_info', {'payment_form': form})
-    form = PaymentForm(request.POST)
-    cc_number = request.POST.get('cc_number')
-    cc_expiry = request.POST.get('cc_expiry')
-    cc_code = request.POST.get('cc_code')
-    if form.is_valid():
+    if request.method == "POST":
+        form = PaymentForm(request.POST)
+        cc_number = request.POST.get('cc_number')
+        cc_expiry = request.POST.get('cc_expiry')
+        cc_code = request.POST.get('cc_code')
+       
         card = Payment.create(cc_number, cc_expiry, cc_code, user)
         card.save()
     return redirect('account:dashboard')
+    
