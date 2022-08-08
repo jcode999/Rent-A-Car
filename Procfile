@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath RentACar RentACar.wsgi
