@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import EmailInput, ModelForm
+from django.forms import ModelForm
 from account.models import Account, Payment
 from django.contrib.auth.forms import UserCreationForm
 
@@ -24,8 +24,6 @@ class UpdateUserForm(ModelForm):
 
 
 class PaymentForm(ModelForm):
-    card_holder_name = forms.CharField(
-        max_length=50, label='Card Holders Name')
 
     class Meta:
         model = Payment

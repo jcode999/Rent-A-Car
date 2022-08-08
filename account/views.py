@@ -1,12 +1,11 @@
 
 from django.shortcuts import render, redirect
-from account.models import Account, Payment
-from car.models import Reservation, Vehicle
-from .forms import LogInForm, RegistrationForm, PaymentForm, UpdateUserForm, ReservationForm
+from account.models import Payment
+from car.models import Reservation
+from account.forms import LogInForm, RegistrationForm, PaymentForm, UpdateUserForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -90,7 +89,10 @@ def save_card(request):
     cc_number = request.POST.get('cc_number')
     cc_expiry = request.POST.get('cc_expiry')
     cc_code = request.POST.get('cc_code')
+
     if form.is_valid():
         card = Payment.create(cc_number, cc_expiry, cc_code, user)
         card.save()
-    return redirect('account:dashboard')
+        return redirect('account:dashboard')
+    else:
+        return render(request, 'dashboard/invalidpage.html')
