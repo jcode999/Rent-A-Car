@@ -1,7 +1,7 @@
 
 from django.db import models
 from django.contrib.auth.base_user import (AbstractBaseUser, BaseUserManager)
-from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
+from creditcards.modles import CardNumberField, CardExpiryField, SecurityCodeField
 from django.utils.translation import gettext_lazy as _
 
 
