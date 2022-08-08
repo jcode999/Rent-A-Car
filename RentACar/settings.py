@@ -8,6 +8,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 
+import django_on_heroku
 import os
 from pathlib import Path
 
@@ -138,4 +139,5 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Configure Django App for Heroku
+# Configure Django App for Heroku.
+django_on_heroku.settings(locals())

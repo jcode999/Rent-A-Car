@@ -1,1 +1,3 @@
-web: gunicorn RentACar.wsgi
+web: gunicorn RentACar.wsgi:application --log-file - --log-level debug
+python manage.py collectstatic --noinput
+manage.py migrate
