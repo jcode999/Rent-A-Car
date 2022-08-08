@@ -8,7 +8,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 
-import django_on_heroku
 import os
 from pathlib import Path
 
@@ -42,7 +41,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'gunicorn',
-    'car'
+    'car',
+
 
 ]
 
@@ -130,6 +130,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+DISABLE_COLLECTSTATIC = 1
 #MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
@@ -140,4 +141,3 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configure Django App for Heroku.
-django_on_heroku.settings(locals())
