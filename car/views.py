@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Vehicle, Reservation
-from account.forms import ReservationForm
+from account.forms import ReservationForm, PaymentForm
 from account.models import Account
 from django.utils.dateparse import parse_date
 
@@ -47,13 +47,13 @@ def reservation(request, slug):
         res_date = parse_date(reservation_date)
         ret_date = parse_date(return_date)
         reservation_period = ret_date - res_date
+        amount_due = vehicle.price * reservation_period.days
         if user.is_authenticated:
             renter = Account.objects.get(id=user.id)
             reservation = Reservation.create(
                 renter, vehicle, reservation_date, return_date)
             reservation.save()
-            #reservation_period = ret_date - res_date
-            amount_due = vehicle.price * reservation_period
-        return render(request, 'single.html', {'vehicle': vehicle, 'reservation_form': reservation_form, 'amount': amount_due})
+        return render(request, 'confirmation.html', {'vehicle': vehicle, 'reservation_form': reservation_form, 'user': user, 'amount_due': amount_due})
     reservation_form = ReservationForm()
-    return render(request, 'single.html', {'vehicle': vehicle, 'reservation_form': reservation_form})
+    payment_form = PaymentForm()
+    return render(request, 'single.html', {'vehicle': vehicle, 'reservation_form': reservation_form, 'payment_form': payment_form})

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<p> Hello {{user.first_name }},</p>
+<p>You have sucessfully rented {{ vehicle.make }} {{ vehicle.mod }}.</p>
+<p>A charge of ${{amount_due}} will be made to your account.</p>
+<p>Please come and pick up your {{vehicle.mod}} at our facility </p>
+
+{% endblock %}
