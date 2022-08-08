@@ -130,7 +130,7 @@
   margin-top: 1rem;
 }
 .submit-button{
-  width: 50%;
+  width: 5rem;
   height: 40px;
   color:rgb(246, 246, 246);
   background-color: black;
@@ -148,13 +148,13 @@
 }
 
 .submit-button:hover{
-  box-shadow: inset 80pc 0 0 0 #804df6;
+  box-shadow: inset 5rem 0 0 0 #804df6;
   cursor: pointer;
   color: #f5f6f8;
 }
 
 .cancle-button{
-  width: 80%;
+  width: 10%;
   height: 40px;
   color:rgb(246, 246, 246);
   background-color: black;
@@ -172,7 +172,7 @@
 
 }
 .cancle-button:hover{
-  box-shadow: inset 80pc 0 0 0 #eb5c10;
+  box-shadow: inset 10pc 0 0 0 #eb5c10;
   cursor: pointer;
   color: #f5f6f8;
 }

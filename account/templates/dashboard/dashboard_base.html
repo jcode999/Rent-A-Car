@@ -18,26 +18,18 @@
     <body>
         <div class="d-flex" id="wrapper">
             <!-- Sidebar -->
-            <div class="bg-white" id="sidebar-wrapper">
+            <div class="bg-dark" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                         class="fas fa-user-secret me-2"></i>RentACar</div>
                 <div class="list-group list-group-flush my-3">
                     <a href="{% url 'account:dashboard' %}"
-                        class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                            class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-<<<<<<< HEAD
-                    <a href="{% url 'account:update_info' %}"
                         class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                            class="fas fa-chart-line me-2"></i>Update Info</a>
-                    <a href="{% url 'account:logout'%}"
-                        class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
-=======
+                            class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="{% url 'account:update_info' %}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                             class="fas fa-pen me-2"></i>Update Info</a>
                     <a href="{% url 'car:car'%}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                             class="fas fa-car-side me-2"></i>Browse Cars</a>
                     <a href="{% url 'account:logout'%}" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
->>>>>>> 0e5c5f01dc8f266920f50ff8d8e817286a1462e8
                             class="fas fa-power-off me-2"></i>Logout</a>
                     
                     

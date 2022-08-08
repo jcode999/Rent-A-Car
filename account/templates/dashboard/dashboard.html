@@ -16,15 +16,11 @@
                     
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item dropdown">
-                                <a class="nav-link  second-text fw-bold" href="#" id="navbarDropdown"
+                                <a class="nav-link   second-text fw-bold" href="#" id="navbarDropdown"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-user me-2"></i>{{ user.username }}
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{% url 'account:dashboard' %}">Profile</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'account:update_info' %}">Settings</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'account:logout'%}">Logout</a></li>
-                                </ul>
+                                
                             </li>
                         </ul>
                     
@@ -35,31 +31,27 @@
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col" width="50">#</th>
+                                    <th scope="col" width="50">Id</th>
                                     <th scope="col">Vehicle</th>
                                     <th scope="col">Rented On</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Return</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <div>
+                                {% for reservation in reservations %}
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Honda Civic</td>
-                                    <td>01/13/2022</td>
-                                    <td>Expired</td>
+                                    <th scope="row">{{reservation.id}}</th>
+                                    <td>{{ reservation.vehicle.make }}, {{reservation.vehicle.mod}}</td>
+                                    <td>{{ reservation.reservation_date }}</td>
+                                    <td>{{ reservation.return_date }}</td>
+                                    
+                                    
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Dodge Challenger</td>
-                                    <td>05/22/2022</td>
-                                    <td>Expired</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Honda Accord</td>
-                                    <td>08/01/2022</td>
-                                    <td>Active</td>
-                                </tr>
+                        
+                            {% endfor %}
+                                </div>
+                                
                             </tbody>
                         </table>
                     </div>

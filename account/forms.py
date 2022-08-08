@@ -3,6 +3,8 @@ from django.forms import EmailInput, ModelForm
 from account.models import Account, Payment
 from django.contrib.auth.forms import UserCreationForm
 
+from car.models import Reservation
+
 
 class LogInForm(forms.Form):
     username = forms.CharField(max_length=50, label='username')
@@ -22,7 +24,15 @@ class UpdateUserForm(ModelForm):
 
 
 class PaymentForm(ModelForm):
+    card_holder_name = forms.CharField(
+        max_length=50, label='Card Holders Name')
 
     class Meta:
         model = Payment
         fields = ['cc_number', 'cc_expiry', 'cc_code']
+
+
+class ReservationForm(ModelForm):
+    class Meta:
+        model = Reservation
+        fields = ['reservation_date', 'return_date']
