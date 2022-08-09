@@ -95,4 +95,4 @@ def save_card(request):
         card.save()
         return redirect('account:dashboard')
     else:
-        return render(request, 'dashboard/invalidpage.html')
+        return render(request, 'invalidpage.html')
