@@ -89,10 +89,8 @@ def save_card(request):
     cc_number = request.POST.get('cc_number')
     cc_expiry = request.POST.get('cc_expiry')
     cc_code = request.POST.get('cc_code')
-
+    card = Payment.create(cc_number, cc_expiry, cc_code, user)
     if form.is_valid():
-        card = Payment.create(cc_number, cc_expiry, cc_code, user)
         card.save()
-        return redirect('account:dashboard')
-    else:
-        return render(request, 'invalidpage.html')
+        return redirect('account:dashbpard')
+    return render(request, 'invalidpage.htnl')

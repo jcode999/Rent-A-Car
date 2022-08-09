@@ -43,7 +43,7 @@
         <h1>Save your credit card</h1>
         <form method='POST' action={% url 'account:save_card' %}>              
         {% csrf_token %}
-        {{payment_form|crispy }}
+        {{payment_form }}
         <button type="submit" class="submit-button">Save</button>
         </form>
     </div>

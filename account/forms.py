@@ -2,6 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from account.models import Account, Payment
 from django.contrib.auth.forms import UserCreationForm
+from creditcards.forms import CardNumberField, CardExpiryField, SecurityCodeField
 
 from car.models import Reservation
 
@@ -23,10 +24,10 @@ class UpdateUserForm(ModelForm):
         fields = ['username', 'email', 'first_name', 'last_name']
 
 
-class PaymentForm(ModelForm):
-    class Meta:
-        model = Payment
-        fields = ['cc_number', 'cc_expiry', 'cc_code']
+class PaymentForm(forms.Form):
+    cc_number = CardNumberField(label='Card Number')
+    cc_expiry = CardExpiryField(label='Expiration Date')
+    cc_code = SecurityCodeField(label='CVV/CVC')
 
 
 class ReservationForm(ModelForm):
