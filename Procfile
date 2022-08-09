@@ -1,1 +1,1 @@
-web: gunicorn RentACar.wsgi
+web: gunicorn RentACar.wsgi --log-file -
