@@ -24,7 +24,6 @@ class UpdateUserForm(ModelForm):
 
 
 class PaymentForm(ModelForm):
-
     class Meta:
         model = Payment
         fields = ['cc_number', 'cc_expiry', 'cc_code']
