@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<p> Hello {{user.first_name }},</p>
-<p>You have sucessfully rented {{ vehicle.make }} {{ vehicle.mod }}.</p>
-<p>A charge of ${{amount_due}} will be made to your account.</p>
-<p>Please come and pick up your {{vehicle.mod}} at our facility </p>
-
+<p> {{user.first_name }}, thank you for using RentACar services!</p>
+<p>Your rental vehicle, {{ vehicle.make }} {{ vehicle.mod }}, is ready for pick up.</p>
+<p>and a charge of ${{amount_due}} will be made to your account.</p>
+<p>Thank you.</p>
 {% endblock %}
