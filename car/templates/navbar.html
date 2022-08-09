@@ -8,14 +8,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         {% if user.is_authenticated %}
-        
+
         <li class="nav-item">
           <a class="nav-link" href="{% url 'account:dashboard' %}" tabindex="-1" aria-disabled="true">Dashboard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'account:logout' %}" tabindex="-1" aria-disabled="true">Log Out</a>
         </li>
-       
+
         {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'account:login' %}" tabindex="-1" aria-disabled="true">Log In</a>
@@ -24,52 +24,52 @@
       </ul>
       <li class="nav-item">
         <div class="drop-down-controll">
-        <div class="dropdown">
-          <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Search vehicle options
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li>
-              <h4>Search By Make</h4>
-              <form action={% url 'car:search_make' %} method="get">
-                <div class="input-group mb-3">
-                  <input name='make' type="text" class="form-control" placeholder="Make" aria-label="Search by make"
-                    aria-describedby="basic-addon2">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">search</button>
+          <div class="dropdown">
+            <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton1"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Search vehicle options
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <h4>Search By Make</h4>
+                <form action={% url 'car:search_make' %} method="get">
+                  <div class="input-group mb-3">
+                    <input name='make' type="text" class="form-control" placeholder="Make" aria-label="Search by make"
+                      aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="submit">search</button>
+                    </div>
                   </div>
-                </div>
-              </form>
-            </li>
-            <li>
-              <h4>Search By Model</h4>
-              <form action={% url 'car:search_model' %} method="get">
-                <div class="input-group mb-3">
-                  <input name='model' type="text" class="form-control" placeholder="Model" aria-label="Search by model"
-                    aria-describedby="basic-addon2">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </form>
+              </li>
+              <li>
+                <h4>Search By Model</h4>
+                <form action={% url 'car:search_model' %} method="get">
+                  <div class="input-group mb-3">
+                    <input name='model' type="text" class="form-control" placeholder="Model"
+                      aria-label="Search by model" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    </div>
                   </div>
-                </div>
-              </form>
-            </li>
-            <li>
-              <h4>Search By Price</h4>
-              <form action={% url 'car:search_price' %} method="get">
-                <div class="input-group mb-3">
-                  <input name='min_price' type="number" class="form-control" placeholder="0" aria-label="Search by price minimum price"
-                    aria-describedby="basic-addon2">
-                    <input name='max_price' type="number" class="form-control" placeholder="1000" aria-label="Search by price maximum price"
-                    aria-describedby="basic-addon2">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">search</button>
+                </form>
+              </li>
+              <li>
+                <h4>Search By Price</h4>
+                <form action={% url 'car:search_price' %} method="get">
+                  <div class="input-group mb-3">
+                    <input name='min_price' type="number" class="form-control" placeholder="0.00"
+                      aria-label="Search by price minimum price" aria-describedby="basic-addon2">
+                    <input name='max_price' type="number" class="form-control" placeholder="0.00"
+                      aria-label="Search by price maximum price" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="submit">search</button>
+                    </div>
                   </div>
-                </div>
-              </form>
-          </li>
+                </form>
+              </li>
+          </div>
+        </div>
+      </li>
     </div>
-  </div>
-  </li>
-  </div>
 </nav>

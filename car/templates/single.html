@@ -110,11 +110,31 @@
                       </div>
                       <div class="row m-0">
                         <div class="col-12  mb-4 p-0">
+
                           <!-- Button trigger modal -->
-                          <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">
                             RENT
                           </button>
+
+                          <!-- Modal -->
+                          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="staticBackdropLabel">Rental Success &#x2705</h5>
+                                </div>
+                                <div class="modal-body">
+                                  Thank you for using RentACar service.
+                                  Your {{vehicle.make}} is ready for pick up.
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn btn-primary">Confirm</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
