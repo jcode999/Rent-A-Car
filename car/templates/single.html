@@ -104,19 +104,20 @@
                         <p class="fw-bold">Payment detail</p>
                       </div>
                       <div class="px-0 mb-3">
+                        
                         {% load crispy_forms_tags %}
                         {% csrf_token %}
                         {{ payment_form| crispy }}
                       </div>
                       <div class="row m-0">
                         <div class="col-12  mb-4 p-0">
-
+                          <input type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?')" />
                           <!-- Button trigger modal -->
                           <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">
                             RENT
                           </button>
-
+                        
                           <!-- Modal -->
                           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

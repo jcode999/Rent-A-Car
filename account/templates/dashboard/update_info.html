@@ -30,20 +30,33 @@
         </ul>
     </div>
 </nav>
+    <div>
+        
+        {% if messages %}
+        {% for message in messages %}
+        <script>
+            
+     // display string message
+          
+            alert( '{{ message }}' ); // display python variable
+        
+        </script>{% endfor %}
 
+        {% endif %}
+    </div>
     <div class="center">
         <h1>User Account</h1>
         <form method='POST' action={% url 'account:update_info' %}>              
         {% csrf_token %}
         {{update_form|crispy }}
-        <button type="submit" class="submit-button">Save</button>
+        <input type="submit" class="submit-button" onclick="return confirm('Are you sure?')" />
         </form>
     </div>
     <div class="center">
         <h1>Save your credit card</h1>
         <form method='POST' action={% url 'account:save_card' %}>              
         {% csrf_token %}
-        {{payment_form }}
+        {{payment_form|crispy}}
         <button type="submit" class="submit-button">Save</button>
         </form>
     </div>

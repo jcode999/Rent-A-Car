@@ -1,4 +1,5 @@
 
+from urllib import response
 from django.shortcuts import render, redirect
 from account.models import Payment
 from car.models import Reservation
@@ -12,7 +13,7 @@ from django.contrib.auth.forms import AuthenticationForm
 def dashboard(request):
     if request.user.is_authenticated:
         user = request.user
-        reservations = Reservation.objects.filter(renter_id=user.id)
+        reservations = reversed(Reservation.objects.filter(renter_id=user.id))
         return render(request, 'dashboard/dashboard.html', {'user': user, 'reservations': reservations})
     else:
         return render(request, 'invalidpage.html')
@@ -76,21 +77,30 @@ def update_info(request):
         user.first_name = request.POST.get('first_name')
         user.last_name = request.POST.get('last_name')
         user.save()
-        return redirect('account:dashboard')
+        messages.success(request, ("Successfully updated"))
+        return redirect('account:update_info')
 
 
-def save_card(request):
-    user = request.user
+def save_card(response):
+    user = response.user
+    initial_dict = {'username': user.username,  # create dictionary with fields as keys
+                    'email': user.email,
+                    'first_name': user.first_name,
+                    'last_name': user.last_name,
+                    }
+    user_form = UpdateUserForm(response.GET or None, initial=initial_dict)
+    if response.method == 'POST':
+        form = PaymentForm(response.POST)
+        cc_number = response.POST.get('cc_number')
+        cc_expiry = response.POST.get('cc_expiry')
+        cc_code = response.POST.get('cc_code')
 
-    if request.method == 'GET':
+        if form.is_valid():
+            card = Payment.create(cc_number, cc_expiry, cc_code, user)
+            card.save()
+            messages.info(response, ("Card Saved Sucessfully"))
+            return redirect('account:update_info')
+    else:
         form = PaymentForm()
-        return redirect('account:update_info', {'payment_form': form})
-    form = PaymentForm(request.POST)
-    cc_number = request.POST.get('cc_number')
-    cc_expiry = request.POST.get('cc_expiry')
-    cc_code = request.POST.get('cc_code')
-    card = Payment.create(cc_number, cc_expiry, cc_code, user)
-    if form.is_valid():
-        card.save()
-        return redirect('account:dashbpard')
-    return render(request, 'invalidpage.htnl')
+
+    return render(response, 'dashboard/update_info.html', {'update_form': user_form, 'user': user, 'payment_form': form})
